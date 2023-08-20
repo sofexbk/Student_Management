@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <template id="report_student_id_details">
+            <!--<t t-call="web.external_layout"><t t-call="web.internal_layout">   <t t-call="web.basic_layout">-->
+        <main>
+            <t t-call="web.html_container">
+            <t t-foreach="docs" t-as="o">
+            <t t-call="web.external_layout">
+                <div class="page">
+                    <div class="stu_structure">
+                     <div class="row">
+                            <div class="col-xs-8">
+                                <table class="table table-condensed" style="border:3px solid black ! important;">
+                                    <tr>
+                                        <td width="40%">
+                                            <p style="text-align:center;padding-top:10px;">
+                                              <img t-if="o.image" t-att-src="image_data_uri(o.image)"
+                                                  style="max-height: 45px;" alt="Image"/>
+                                            </p>
+                                        </td>
+                                        <td width="60%">
+                                            <table>
+                                                <tr>
+                                                    <td>
+                                                        <span>
+                                                            <strong>First Name:</strong>
+                                                        </span>
+                                                    </td>
+                                                    <td >
+                                                        <span t-field="o.first_name"/>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td>
+                                                       <span>
+                                                           <strong>Age: <span t-field="o.age"/></strong>
+                                                       </span>
+                                                    </td>
+                                                </tr>
+                                            </table>
+                                        </td>
+                                    </tr>
+                                </table>
+                            </div>
+                     </div>
+                    </div>
+                </div>
+                <br/>
+                <t t-if="o.student_course_note_ids">
+                    <span>Notes</span>
+                    <table class="table table-sm name=notes">
+                        <thead>
+                            <tr>
+                                <th name="th_Course_name" class="text-left">
+                                   <span>Course_name</span>
+                                </th>
+                                <th name="th_course code" class="text-left">
+                                   <span>course_code</span>
+                                </th>
+                                <th name="th_student_id" class="text-left">
+                                   <span>student_id</span>
+                                </th>
+                                <th name="th_note" class="text-left">
+                                   <span>note</span>
+                                </th>
+                            </tr>
+                        </thead>
+                        <t t-foreach="o.student_course_note_ids" t-as="line">
+                            <t>
+                                <td>
+                                   <span t-field="line.course_id"/>
+                                </td>
+                                <td>
+                                   <span t-field="line.course_code"/>
+                                </td>
+                                <td>
+                                   <span t-field="line.student_id"/>
+                                </td>
+                                <td>
+                                   <span t-field="line.name"/>
+                                </td>
+                            </t>
+                        </t>
+                    </table>
+                </t>
+           </t>
+           </t>
+           </t>
+      </main>
+</template>
+</odoo>

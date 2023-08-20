@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+  <!--Search-->
+    <record id="travel_travel_view_search" model="ir.ui.view">
+        <field name="name">student.search</field>
+        <field name="model">student</field>
+        <field name="arch" type="xml">
+            <search string="Student">
+                <field name="cne" string="CNE"/>
+            </search>
+        </field>
+    </record>
+
+
+    <!--Views-->
+        <record id="student_view_tree" model="ir.ui.view">
+              <field name="name">student.tree</field>
+              <field name="model">student</field>
+              <field name="arch" type="xml">
+                  <tree string="Student tree view">
+                     <field name="cne"/>
+                     <field name="first_name"/>
+                     <field name="second_name"/>
+                     <field name="email" />
+                     <field name="date_birth"/>
+                      <field name="age"/>
+                      <field name="student_state"/>
+                  </tree>
+              </field>
+        </record>
+
+        <record id="student_view_form" model="ir.ui.view">
+            <field name="name">student.form</field>
+            <field name="model">student</field>
+            <field name="arch" type="xml">
+                <form string="Student form view">
+                    <header>
+                        <button id="button_wizard_student" name="wizard_action" type="object" string="Validate Result"  icon="fa-check"  class="btn-success" />
+                    </header>
+                    <sheet>
+                        <group>
+                            <group>
+                        <field name="cne"/>
+                        <field name="first_name"/>
+                        <field name="second_name"/>
+                            </group>
+                            <group>
+                         <field name="email"/>
+                        <field name="date_birth"/>
+                        <field name="image" widget="image" style="max-width: 50px; max-height: 50px;"/>
+                           </group>
+                            <group>
+                                <field name="student_state"/>
+                                <field name="age"/>
+                            </group>
+                        </group>
+                            <tab>
+                                <notebook>
+                                    <page string="notes">
+                                        <field name="student_course_note_ids"/>
+                                    </page>
+                                </notebook>
+                            </tab>
+                        <group>
+                            <field name="text_note"/>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+    <record id="travel_travel_view_kanban" model="ir.ui.view">
+        <field name="name">student.kanban</field>
+        <field name="model">student</field>
+        <field name="arch" type="xml">
+            <kanban class="Student">
+                <templates>
+                    <t t-name="kanban-box">
+                        <div t-attf-class="oe_kanban_global_click">
+                            <div>
+                                <strong>
+                                    <field name="cne"/>
+                                </strong>
+                            </div>
+                        </div>
+                    </t>
+                </templates>
+            </kanban>
+        </field>
+    </record>
+
+
+
+    <!--Student Action-->
+    <record id="student_action" model="ir.actions.act_window">
+        <field name="name">Student</field>
+        <field name="res_model">student</field>
+        <field name="view_mode">tree,form,kanban</field>
+        <field name="help" type="html">
+          <p class="o_view_content_smiling_face">
+            Add a Student
+          </p>
+        </field>
+    </record>
+
+
+
+    <menuitem
+        id="menu_student"
+        name="Student"
+        action="student_action"
+        sequence="160"/>
+</odoo>
