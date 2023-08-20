@@ -1,5 +1,5 @@
 {
-    "name": "Stage_Module",
+    "name": "Module",
     "version": "16.0.1.0.0",
     "website":"Odoo_student",
     "summary":"Odoo 16 developement",
